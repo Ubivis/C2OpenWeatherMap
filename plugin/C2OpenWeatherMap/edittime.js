@@ -58,7 +58,7 @@ AddComboParamOption("Kelvin");
 AddComboParamOption("Fahrenheit");
 AddComboParamOption("Celsius");
 AddComboParam("type", "Return temperature as", 0);
-AddCondition(0, cf_none, "Return Temperatur", "Weather", "Returns current temperature as {0}", "Converts and returns current temperature!", "Convert");
+AddCondition(0, cf_deprecated, "Return Temperatur", "Weather", "Returns current temperature as {0}", "Converts and returns current temperature!", "Convert");
 
 ////////////////////////////////////////
 // Actions
@@ -111,7 +111,8 @@ AddExpression(15, ef_return_number, "wid", "weather", "wid", "Weather condition 
 AddExpression(16, ef_return_string, "main", "weather", "main", "Condition name.");
 AddExpression(17, ef_return_string, "desc", "weather", "desc", "Condition description.");
 AddExpression(18, ef_return_string, "icon", "weather", "icon", "OpenWeatherMap.org icon code");
-
+AddExpression(19, ef_return_number, "celsius", "main", "celsius", "Temperature in Celsius");
+AddExpression(19, ef_return_number, "fahrenheit", "main", "fahrenheit", "Temperature in Fahrenheit");
 
 ////////////////////////////////////////
 ACESDone();
