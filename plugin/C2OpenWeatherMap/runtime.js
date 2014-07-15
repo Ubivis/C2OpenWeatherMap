@@ -153,7 +153,7 @@ cr.plugins_.UBIOWM = function(runtime)
 var weather =
 {
 fetchdata: function ( wetter )
-{	
+	{	
 	this.exp_cid = wetter.list[0].id;
 	this.exp_wdt = wetter.list[0].dt;
 	this.exp_name = wetter.list[0].name;
@@ -169,12 +169,13 @@ fetchdata: function ( wetter )
 	this.exp_speed = wetter.list[0].wind.speed;
 	this.exp_deg = wetter.list[0].wind.deg;
 	this.exp_all = wetter.list[0].clouds.all;
-//	this.exp_rain3h = wetter.list[0].rain.3h;
-//	this.exp_snow3h = wetter.list[0].snow.3h;
+	this.exp_rain3h = wetter.list[0].rain.3h;
+	this.exp_snow3h = wetter.list[0].snow.3h;
 	this.exp_wid = wetter.list[0].weather[0].id;
 	this.exp_main = wetter.list[0].weather[0].main;
 	this.exp_desc = wetter.list[0].weather[0].desc;
 	this.exp_icon = wetter.list[0].weather[0].icon;
+	}
 }
 
 	//////////////////////////////////////
