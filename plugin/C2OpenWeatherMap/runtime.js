@@ -134,8 +134,8 @@ cr.plugins_.UBIOWM = function(runtime)
 
 function fetchdata ( data )
 {
-        cr.plugins_.UBIOWM.prototype.id = data.id;
-		    cr.plugins_.UBIOWM.prototype.dt = data.dt;
+        		cr.plugins_.UBIOWM.prototype.cid = data.id;
+		    cr.plugins_.UBIOWM.prototype.wdt = data.dt;
 		    cr.plugins_.UBIOWM.prototype.name = data.name;
 		    cr.plugins_.UBIOWM.prototype.lat = data.coord.lat;
 		    cr.plugins_.UBIOWM.prototype.lon = data.coord.lon;
@@ -160,25 +160,23 @@ function fetchdata ( data )
 	function Cnds() {};
 
 	// the example condition
-	Cnds.prototype.Convert = function (type)
-	{
-	  var temp = 0;
+Cnds.prototype.Convert = function (type)
+{
+    var temp = 0;
     if (type == 0)
     {
       temp = cr.plugins_.UBIOWM.prototype.temp;
-      return temp;
     }
     if (type == 1)
     {
       temp = ((cr.plugins_.UBIOWM.prototype.temp - 273.15) * 1.8)) + 32;
-      return temp;
     }
     if (type == 2)
     {
       temp = cr.plugins_.UBIOWM.prototype.temp - 273.15;
-      return temp;
     }
-	};
+    return temp;
+};
 	
 	// ... other conditions here ...
 	
