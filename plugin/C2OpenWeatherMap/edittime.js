@@ -54,8 +54,11 @@ function GetPluginSettings()
 //				script_name);		// corresponding runtime function name
 				
 // example				
-AddNumberParam("Number", "Enter a number to test if positive.");
-AddCondition(0, cf_none, "Is number positive", "My category", "{0} is positive", "Description for my condition!", "MyCondition");
+AddComboParamOption("Kelvin");
+AddComboParamOption("Fahrenheit");
+AddComboParamOption("Celsius");
+AddComboParam(type, "Return temperature as", 0);
+AddCondition(0, cf_none, "Return Temperatur", "Weather", "Returns current temperature as {0}", "Converts and returns current temperature!", "Convert");
 
 ////////////////////////////////////////
 // Actions
