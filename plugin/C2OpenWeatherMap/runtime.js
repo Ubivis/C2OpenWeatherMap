@@ -218,7 +218,7 @@ Cnds.prototype.Convert = function (type)
 	    url += City;
 	    url += "&cnt=1";
 	    url += "&APPID=";
-	    url += "cr.plugins_.UBIOWM.prototype.APIkey;";
+	    url += cr.plugins_.UBIOWM.prototype.APIkey;
 	    alert(url);
 	    $.ajax({
 	        type: "POST",
@@ -246,7 +246,7 @@ Cnds.prototype.Convert = function (type)
 	    url += City;
 	    url += "&cnt=1";
 	    url += "&APPID=";
-	    url += "cr.plugins_.UBIOWM.exp.APIkey;";
+	    url += cr.plugins_.UBIOWM.prototype.APIkey;
 	    $.ajax({
 	        type: "POST",
 	        dataType: "jsonp",
@@ -275,7 +275,7 @@ Cnds.prototype.Convert = function (type)
 	    url += Lon;
 	    url += "&cnt=1";
 	    url += "&APPID=";
-	    url += "cr.plugins_.UBIOWM.prototype.APIkey;";
+	    url += cr.plugins_.UBIOWM.prototype.APIkey;
 	    $.ajax({
 	        type: "POST",
 	        dataType: "jsonp",
