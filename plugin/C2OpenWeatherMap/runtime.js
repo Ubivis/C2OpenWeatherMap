@@ -140,6 +140,8 @@ function fetchdata ( data )
 		    cr.plugins_.UBIOWM.prototype.lat = data.coord.lat;
 		    cr.plugins_.UBIOWM.prototype.lon = data.coord.lon;
 		    cr.plugins_.UBIOWM.prototype.temp = data.main.temp;
+		    cr.plugins_.UBIOWM.prototype.celsius = data.main.temp - 273.15;
+		    cr.plugins_.UBIOWM.prototype.fahrenheit = ((data.main.temp - 273.15) * 1.8) + 32;
 		    cr.plugins_.UBIOWM.prototype.pressure = data.main.pressure;
 		    cr.plugins_.UBIOWM.prototype.humidity = data.main.humidity;
 		    cr.plugins_.UBIOWM.prototype.temp_min = data.main.temp_min;
