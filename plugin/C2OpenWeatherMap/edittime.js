@@ -75,10 +75,10 @@ AddCondition(0, cf_none, "Return Temperatur", "Weather", "Returns current temper
 AddStringParam("City", "Name of City.", "London, UK");
 AddAction(0, af_none, "Weather by City Name", "Weather", "Update Weather for {0}", "Receive the current weather by City Name!", "WeatherByCity");
 AddNumberParam("City", "ID of City.", "2172797");
-AddAction(0, af_none, "Weather by City ID", "Weather", "Update Weather for {0}", "Receive the current weather by City ID!", "WeatherByID");
+AddAction(1, af_none, "Weather by City ID", "Weather", "Update Weather for {0}", "Receive the current weather by City ID!", "WeatherByID");
 AddNumberParam("Lat", "Latitude of City.", "35");
 AddNumberParam("Lon", "Longitude of City.", "139");
-AddAction(0, af_none, "Weather by geographic coordinates", "Weather", "Update Weather for {0}, {1}", "Receive the current weather by geogrephic coordinates!", "WeatherByLatLon");
+AddAction(2, af_none, "Weather by geographic coordinates", "Weather", "Update Weather for {0}, {1}", "Receive the current weather by geogrephic coordinates!", "WeatherByLatLon");
 
 ////////////////////////////////////////
 // Expressions
@@ -92,25 +92,25 @@ AddAction(0, af_none, "Weather by geographic coordinates", "Weather", "Update We
 //				 description);	// description in expressions panel
 
 // example
-AddExpression(0, ef_return_number, "ID", "root", "id", "City identification.");
-AddExpression(0, ef_return_number, "dt", "root", "dt", "Data receiving time unit time, GMT.");
-AddExpression(0, ef_return_string, "name", "root", "name", "City name.");
-AddExpression(0, ef_return_number, "lat", "coord", "lat", "City Location (Latitude).");
-AddExpression(0, ef_return_number, "lon", "coord", "lon", "City Location (Longitude).");
-AddExpression(0, ef_return_number, "temp", "main", "temp", "Temperature in Kelvin.");
-AddExpression(0, ef_return_number, "pressure", "main", "pressure", "Atmospheric pressure, hPa.");
-AddExpression(0, ef_return_number, "humidity", "main", "humidity", "Himidity, %.");
-AddExpression(0, ef_return_number, "temp_min", "main", "temp_min", "Minimum temperature at the moment (deviation is possible for large cities and megalopolises)");
-AddExpression(0, ef_return_number, "temp_max", "main", "temp_max", "Maximum temperature at the moment (deviation is possible for large cities and megalopolises)");
-AddExpression(0, ef_return_number, "speed", "wind", "speed", "Wind speed, mps.");
-AddExpression(0, ef_return_number, "deg", "wind", "deg", "Wind direction, degrees (meteorilogical)");
-AddExpression(0, ef_return_number, "all", "clouds", "all", "Cloudiness, %");
-AddExpression(0, ef_return_number, "rain3h", "rain", "rain3h", "Precipitation volume per 3 hours, mm");
-AddExpression(0, ef_return_number, "snow3h", "snow", "snow3h", "Snow volume per 3 hours, mm");
-AddExpression(0, ef_return_number, "wid", "weather", "wid", "Weather condition code");
-AddExpression(0, ef_return_string, "main", "weather", "main", "Condition name.");
-AddExpression(0, ef_return_string, "desc", "weather", "desc", "Condition description.");
-AddExpression(0, ef_return_string, "icon", "weather", "icon", "OpenWeatherMap.org icon code");
+AddExpression(0, ef_return_number, "cid", "root", "cid", "City identification.");
+AddExpression(1, ef_return_number, "ddt", "root", "ddt", "Data receiving time unit time, GMT.");
+AddExpression(2, ef_return_string, "name", "root", "name", "City name.");
+AddExpression(3, ef_return_number, "lat", "coord", "lat", "City Location (Latitude).");
+AddExpression(4, ef_return_number, "lon", "coord", "lon", "City Location (Longitude).");
+AddExpression(5, ef_return_number, "temp", "main", "temp", "Temperature in Kelvin.");
+AddExpression(6, ef_return_number, "pressure", "main", "pressure", "Atmospheric pressure, hPa.");
+AddExpression(7, ef_return_number, "humidity", "main", "humidity", "Himidity, %.");
+AddExpression(8, ef_return_number, "temp_min", "main", "temp_min", "Minimum temperature at the moment (deviation is possible for large cities and megalopolises)");
+AddExpression(9, ef_return_number, "temp_max", "main", "temp_max", "Maximum temperature at the moment (deviation is possible for large cities and megalopolises)");
+AddExpression(10, ef_return_number, "speed", "wind", "speed", "Wind speed, mps.");
+AddExpression(11, ef_return_number, "deg", "wind", "deg", "Wind direction, degrees (meteorilogical)");
+AddExpression(12, ef_return_number, "all", "clouds", "all", "Cloudiness, %");
+AddExpression(13, ef_return_number, "rain3h", "rain", "rain3h", "Precipitation volume per 3 hours, mm");
+AddExpression(14, ef_return_number, "snow3h", "snow", "snow3h", "Snow volume per 3 hours, mm");
+AddExpression(15, ef_return_number, "wid", "weather", "wid", "Weather condition code");
+AddExpression(16, ef_return_string, "main", "weather", "main", "Condition name.");
+AddExpression(17, ef_return_string, "desc", "weather", "desc", "Condition description.");
+AddExpression(18, ef_return_string, "icon", "weather", "icon", "OpenWeatherMap.org icon code");
 
 
 ////////////////////////////////////////
@@ -127,7 +127,7 @@ ACESDone();
 // new cr.Property(ept_link,		name,	link_text,		description, "firstonly")		// has no associated value; simply calls "OnPropertyChanged" on click
 
 var property_list = [
-	new cr.Property(ept_string, 	"APIkey",		"Enter your API Key",		"API Key to requested on openweathermap.org.")
+	new cr.Property(ept_text, 	"APIkey",		"Enter your API Key",		"API Key to requested on openweathermap.org.")
 	];
 	
 // Called by IDE when a new object type is to be created
