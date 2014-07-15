@@ -150,7 +150,9 @@ cr.plugins_.UBIOWM = function(runtime)
 	};
 	/**END-PREVIEWONLY**/
 
-function fetchdata ( wetter )
+var weather =
+{
+fetchdata: function ( wetter )
 {	
 	this.exp_cid = wetter.list[0].id;
 	this.exp_wdt = wetter.list[0].dt;
@@ -222,7 +224,7 @@ Cnds.prototype.Convert = function (type)
 	        url: url + "&callback=?",
 	        async: false,
 	        success: function (data) {
-	        	fetchdata( response );
+	        	weather.fetchdata( response );
 /*	            temperature = data.list[0].main.temp;
 	            alert(temperature);
 	            dfd.resolve(temperature);*/
