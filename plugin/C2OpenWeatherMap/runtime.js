@@ -132,29 +132,29 @@ cr.plugins_.UBIOWM = function(runtime)
 	};
 	/**END-PREVIEWONLY**/
 
-function fetchdata ( data )
+function fetchdata ( wetter )
 {
-        		cr.plugins_.UBIOWM.prototype.cid = data.id;
-		    cr.plugins_.UBIOWM.prototype.wdt = data.dt;
-		    cr.plugins_.UBIOWM.prototype.name = data.name;
-		    cr.plugins_.UBIOWM.prototype.lat = data.coord.lat;
-		    cr.plugins_.UBIOWM.prototype.lon = data.coord.lon;
-		    cr.plugins_.UBIOWM.prototype.temp = data.main.temp;
-		    cr.plugins_.UBIOWM.prototype.celsius = data.main.temp - 273.15;
-		    cr.plugins_.UBIOWM.prototype.fahrenheit = ((data.main.temp - 273.15) * 1.8) + 32;
-		    cr.plugins_.UBIOWM.prototype.pressure = data.main.pressure;
-		    cr.plugins_.UBIOWM.prototype.humidity = data.main.humidity;
-		    cr.plugins_.UBIOWM.prototype.temp_min = data.main.temp_min;
-		    cr.plugins_.UBIOWM.prototype.temp_max = data.main.temp_max;
-		    cr.plugins_.UBIOWM.prototype.speed = data.wind.speed;
-		    cr.plugins_.UBIOWM.prototype.deg = data.wind.deg;
-		    cr.plugins_.UBIOWM.prototype.all = data.clouds.all;
-		    cr.plugins_.UBIOWM.prototype.rain3h = data.rain.3h;
-		    cr.plugins_.UBIOWM.prototype.snow3h = data.snow.3h;
-		    cr.plugins_.UBIOWM.prototype.wid = data.weather[0].id;
-		    cr.plugins_.UBIOWM.prototype.main = data.weather[0].main;
-		    cr.plugins_.UBIOWM.prototype.desc = data.weather[0].desc;
-		    cr.plugins_.UBIOWM.prototype.icon = data.weather[0].icon;
+        		cr.plugins_.UBIOWM.prototype.cid = wetter.list[0].id;
+		    cr.plugins_.UBIOWM.prototype.wdt = wetter.list[0].dt;
+		    cr.plugins_.UBIOWM.prototype.name = wetter.list[0].name;
+		    cr.plugins_.UBIOWM.prototype.lat = wetter.list[0].coord.lat;
+		    cr.plugins_.UBIOWM.prototype.lon = wetter.list[0].coord.lon;
+		    cr.plugins_.UBIOWM.prototype.temp = wetter.list[0].main.temp;
+		    cr.plugins_.UBIOWM.prototype.celsius = wetter.list[0].main.temp - 273.15;
+		    cr.plugins_.UBIOWM.prototype.fahrenheit = ((wetter.list[0].main.temp - 273.15) * 1.8) + 32;
+		    cr.plugins_.UBIOWM.prototype.pressure = wetter.list[0].main.pressure;
+		    cr.plugins_.UBIOWM.prototype.humidity = wetter.list[0].main.humidity;
+		    cr.plugins_.UBIOWM.prototype.temp_min = wetter.list[0].main.temp_min;
+		    cr.plugins_.UBIOWM.prototype.temp_max = wetter.list[0].main.temp_max;
+		    cr.plugins_.UBIOWM.prototype.speed = wetter.list[0].wind.speed;
+		    cr.plugins_.UBIOWM.prototype.deg = wetter.list[0].wind.deg;
+		    cr.plugins_.UBIOWM.prototype.all = wetter.list[0].clouds.all;
+		    cr.plugins_.UBIOWM.prototype.rain3h = wetter.list[0].rain.3h;
+		    cr.plugins_.UBIOWM.prototype.snow3h = wetter.list[0].snow.3h;
+		    cr.plugins_.UBIOWM.prototype.wid = wetter.list[0].weather[0].id;
+		    cr.plugins_.UBIOWM.prototype.main = wetter.list[0].weather[0].main;
+		    cr.plugins_.UBIOWM.prototype.desc = wetter.list[0].weather[0].desc;
+		    cr.plugins_.UBIOWM.prototype.icon = wetter.list[0].weather[0].icon;
 }
 
 	//////////////////////////////////////
@@ -191,53 +191,82 @@ Cnds.prototype.Convert = function (type)
 	// the example action
 	Acts.prototype.WeatherByCity = function (City)
 	{
-		var AJAX_req = new XMLHttpRequest();
-		var url = encodeURI("api.openweathermap.org/data/2.5/weather?q=" & City & "&APPID=" & cr.plugins_.UBIOWM.prototype.APIkey;
-		Ajax_req.open("GET", url, true );
-		AJAX_req.SetRequestHeader("Content-type", "application/json");
-		AJAX_req.onreadystatechange = function()
-		{
-		  if (AJAX_req.readyState == 4 && AJAX_req.status = 200)
-		  {
-		    var response JSON.parse( AJAX_req.responseText );
-		    fetchdata( response );
-		  }
-		}
-		AJAX_req.send();
+	var temperature = 0;
+	    var dfd = $.Deferred();
+	    var url = "http://api.openweathermap.org/data/2.5/weather?q=";
+	    url += City;
+	    url += "&cnt=1";
+	    url += "&APPID=";
+	    url += "cr.plugins_.UBIOWM.prototype.APIkey;";
+	    $.ajax({
+	        type: "POST",
+	        dataType: "jsonp",
+	        url: url + "&callback=?",
+	        async: false,
+	        success: function (data) {
+	        	fetchdata( response );
+/*	            temperature = data.list[0].main.temp;
+	            alert(temperature);
+	            dfd.resolve(temperature);*/
+	        },
+	        error: function (errorData) {
+	            alert("Error while getting weather data :: " + errorData.status);
+	        }
+	    });
 	};
 	
 	Acts.prototype.WeatherByID = function (City)
 	{
-		var AJAX_req = new XMLHttpRequest();
-		var url = encodeURI("api.openweathermap.org/data/2.5/weather?id=" & City & "&APPID=" & cr.plugins_.UBIOWM.prototype.APIkey;
-		Ajax_req.open("GET", url, true );
-		AJAX_req.SetRequestHeader("Content-type", "application/json");
-		AJAX_req.onreadystatechange = function()
-		{
-		  if (AJAX_req.readyState == 4 && AJAX_req.status = 200)
-		  {
-		    var response JSON.parse( AJAX_req.responseText );
-		    fetchdata( response );
-		  }
-		}
-		AJAX_req.send();
-	};
+	var temperature = 0;
+	    var dfd = $.Deferred();
+	    var url = "http://api.openweathermap.org/data/2.5/weather?id=";
+	    url += City;
+	    url += "&cnt=1";
+	    url += "&APPID=";
+	    url += "cr.plugins_.UBIOWM.prototype.APIkey;";
+	    $.ajax({
+	        type: "POST",
+	        dataType: "jsonp",
+	        url: url + "&callback=?",
+	        async: false,
+	        success: function (data) {
+	        	fetchdata( response );
+/*	            temperature = data.list[0].main.temp;
+	            alert(temperature);
+	            dfd.resolve(temperature);*/
+	        },
+	        error: function (errorData) {
+	            alert("Error while getting weather data :: " + errorData.status);
+	        }
+	    });
+	}
 	
 	Acts.prototype.WeatherByLatLon = function (Lat, Lon)
 	{
-		var AJAX_req = new XMLHttpRequest();
-		var url = encodeURI("api.openweathermap.org/data/2.5/weather?lat="&Lat&"&lon="&Lon&"&APPID=" & cr.plugins_.UBIOWM.prototype.APIkey;
-		Ajax_req.open("GET", url, true );
-		AJAX_req.SetRequestHeader("Content-type", "application/json");
-		AJAX_req.onreadystatechange = function()
-		{
-		  if (AJAX_req.readyState == 4 && AJAX_req.status = 200)
-		  {
-		    var response JSON.parse( AJAX_req.responseText );
-		    fetchdata( response );
-		  }
-		}
-		AJAX_req.send();
+	var temperature = 0;
+	    var dfd = $.Deferred();
+	    var url = "http://api.openweathermap.org/data/2.5/weather?lat=";
+	    url += Lat;
+	    url += "&lon=";
+	    url += Lon;
+	    url += "&cnt=1";
+	    url += "&APPID=";
+	    url += "cr.plugins_.UBIOWM.prototype.APIkey;";
+	    $.ajax({
+	        type: "POST",
+	        dataType: "jsonp",
+	        url: url + "&callback=?",
+	        async: false,
+	        success: function (data) {
+	        	fetchdata( response );
+/*	            temperature = data.list[0].main.temp;
+	            alert(temperature);
+	            dfd.resolve(temperature);*/
+	        },
+	        error: function (errorData) {
+	            alert("Error while getting weather data :: " + errorData.status);
+	        }
+	    });
 	};
 
 
