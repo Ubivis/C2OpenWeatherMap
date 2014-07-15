@@ -51,9 +51,27 @@ cr.plugins_.UBIOWM = function(runtime)
 	// called whenever an instance is created
 	instanceProto.onCreate = function()
 	{
-		// note the object is sealed after this call; ensure any properties you'll ever need are set on the object
-		// e.g...
-		// this.myValue = 0;
+		this.exp_cid = 0;
+		this.exp_ddt = 0;
+		this.exp_name = "";
+		this.exp_lat = 0;
+		this.exp_lon = 0;
+		this.exp_temp = 0;
+		this.exp_pressure = 0;
+		this.exp_humidity = 0;
+		this.exp_temp_min = 0;
+		this.exp_temp_max = 0;
+		this.exp_speed = 0;
+		this.exp_deg = 0;
+		this.exp_all = 0;
+		this.exp_rain3h = 0;
+		this.exp_snow3h = 0;
+		this.exp_wid = 0;
+		this.main = 0;
+		this.exp_desc = "";
+		this.exp_icon = "";
+		this.exp_celsius = 0;
+		this.exp_fahrenheit = 0;
 	};
 	
 	// called whenever an instance is destroyed
@@ -133,28 +151,28 @@ cr.plugins_.UBIOWM = function(runtime)
 	/**END-PREVIEWONLY**/
 
 function fetchdata ( wetter )
-{
-        		cr.plugins_.UBIOWM.prototype.cid = wetter.list[0].id;
-		    cr.plugins_.UBIOWM.prototype.wdt = wetter.list[0].dt;
-		    cr.plugins_.UBIOWM.prototype.name = wetter.list[0].name;
-		    cr.plugins_.UBIOWM.prototype.lat = wetter.list[0].coord.lat;
-		    cr.plugins_.UBIOWM.prototype.lon = wetter.list[0].coord.lon;
-		    cr.plugins_.UBIOWM.prototype.temp = wetter.list[0].main.temp;
-		    cr.plugins_.UBIOWM.prototype.celsius = wetter.list[0].main.temp - 273.15;
-		    cr.plugins_.UBIOWM.prototype.fahrenheit = ((wetter.list[0].main.temp - 273.15) * 1.8) + 32;
-		    cr.plugins_.UBIOWM.prototype.pressure = wetter.list[0].main.pressure;
-		    cr.plugins_.UBIOWM.prototype.humidity = wetter.list[0].main.humidity;
-		    cr.plugins_.UBIOWM.prototype.temp_min = wetter.list[0].main.temp_min;
-		    cr.plugins_.UBIOWM.prototype.temp_max = wetter.list[0].main.temp_max;
-		    cr.plugins_.UBIOWM.prototype.speed = wetter.list[0].wind.speed;
-		    cr.plugins_.UBIOWM.prototype.deg = wetter.list[0].wind.deg;
-		    cr.plugins_.UBIOWM.prototype.all = wetter.list[0].clouds.all;
-		    cr.plugins_.UBIOWM.prototype.rain3h = wetter.list[0].rain.3h;
-		    cr.plugins_.UBIOWM.prototype.snow3h = wetter.list[0].snow.3h;
-		    cr.plugins_.UBIOWM.prototype.wid = wetter.list[0].weather[0].id;
-		    cr.plugins_.UBIOWM.prototype.main = wetter.list[0].weather[0].main;
-		    cr.plugins_.UBIOWM.prototype.desc = wetter.list[0].weather[0].desc;
-		    cr.plugins_.UBIOWM.prototype.icon = wetter.list[0].weather[0].icon;
+{	
+	this.exp_cid = wetter.list[0].id;
+	this.exp_wdt = wetter.list[0].dt;
+	this.exp_name = wetter.list[0].name;
+	this.exp_lat = wetter.list[0].coord.lat;
+	this.exp_lon = wetter.list[0].coord.lon;
+	this.exp_temp = wetter.list[0].main.temp;
+	this.exp_celsius = wetter.list[0].main.temp - 273.15;
+	this.exp_fahrenheit = ((wetter.list[0].main.temp - 273.15) * 1.8) + 32;
+	this.exp_pressure = wetter.list[0].main.pressure;
+	this.exp_humidity = wetter.list[0].main.humidity;
+	this.exp_temp_min = wetter.list[0].main.temp_min;
+	this.exp_temp_max = wetter.list[0].main.temp_max;
+	this.exp_speed = wetter.list[0].wind.speed;
+	this.exp_deg = wetter.list[0].wind.deg;
+	this.exp_all = wetter.list[0].clouds.all;
+	this.exp_rain3h = wetter.list[0].rain.3h;
+	this.exp_snow3h = wetter.list[0].snow.3h;
+	this.exp_wid = wetter.list[0].weather[0].id;
+	this.exp_main = wetter.list[0].weather[0].main;
+	this.exp_desc = wetter.list[0].weather[0].desc;
+	this.exp_icon = wetter.list[0].weather[0].icon;
 }
 
 	//////////////////////////////////////
@@ -223,7 +241,7 @@ Cnds.prototype.Convert = function (type)
 	    url += City;
 	    url += "&cnt=1";
 	    url += "&APPID=";
-	    url += "cr.plugins_.UBIOWM.prototype.APIkey;";
+	    url += "cr.plugins_.UBIOWM.exp.APIkey;";
 	    $.ajax({
 	        type: "POST",
 	        dataType: "jsonp",
@@ -277,15 +295,112 @@ Cnds.prototype.Convert = function (type)
 	function Exps() {};
 	
 	// the example expression
-	Exps.prototype.MyExpression = function (ret)	// 'ret' must always be the first parameter - always return the expression's result through it!
+	Exps.prototype.cid = function (ret)
 	{
-		ret.set_int(1337);				// return our value
-		// ret.set_float(0.5);			// for returning floats
-		// ret.set_string("Hello");		// for ef_return_string
-		// ret.set_any("woo");			// for ef_return_any, accepts either a number or string
+		ret.set_int(this.exp_cid);
 	};
-	
+
+	Exps.prototype.ddt = function (ret)
+	{
+		ret.set_int(this.exp_ddt);
+	};
+
+	Exps.prototype.name = function (ret)
+	{
+		ret.set_string(this.exp_name);
+	};
+
+	Exps.prototype.lat = function (ret)
+	{
+		ret.set_int(this.exp_lat);
+	};
+
+	Exps.prototype.lon = function (ret)
+	{
+		ret.set_int(this.exp_lon);
+	};
+
+	Exps.prototype.temp = function (ret)
+	{
+		ret.set_int(this.exp_temp);
+	};
+
+	Exps.prototype.pressure = function (ret)
+	{
+		ret.set_int(this.exp_pressure);
+	};
+
+	Exps.prototype.humidity = function (ret)
+	{
+		ret.set_int(this.exp_humidity);
+	};
+
+	Exps.prototype.temp_min = function (ret)
+	{
+		ret.set_int(this.exp_temp_min);
+	};
+
+	Exps.prototype.temp_max = function (ret)
+	{
+		ret.set_int(this.exp_temp_max);
+	};
+
+	Exps.prototype.speed = function (ret)
+	{
+		ret.set_int(this.exp_speed);
+	};
+
+	Exps.prototype.deg = function (ret)
+	{
+		ret.set_int(this.exp_deg);
+	};
+
+	Exps.prototype.all = function (ret)
+	{
+		ret.set_int(this.exp_all);
+	};
+
+	Exps.prototype.rain3h = function (ret)
+	{
+		ret.set_int(this.exp_rain3h);
+	};
+
+	Exps.prototype.snow3h = function (ret)
+	{
+		ret.set_int(this.exp_snow3h);
+	};
+
+	Exps.prototype.wid = function (ret)
+	{
+		ret.set_int(this.exp_wid);
+	};
+
+	Exps.prototype.main = function (ret)
+	{
+		ret.set_int(this.main);
+	};
+
+	Exps.prototype.desc = function (ret)
+	{
+		ret.set_string(this.exp_desc);
+	};
+
+	Exps.prototype.icon = function (ret)
+	{
+		ret.set_string(this.exp_icon);
+	};
+
+	Exps.prototype.celsius = function (ret)
+	{
+		ret.set_int(this.exp_celsius);
+	};
+
+	Exps.prototype.fahrenheit = function (ret)
+	{
+		ret.set_int(this.exp_fahrenheit);
+	};
 	// ... other expressions here ...
+
 	
 	pluginProto.exps = new Exps();
 
