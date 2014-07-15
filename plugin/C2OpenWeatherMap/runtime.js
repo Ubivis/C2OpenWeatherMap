@@ -154,27 +154,27 @@ var weather =
 {
 fetchdata: function ( wetter )
 	{	
-	this.exp_cid = wetter.list[0].id;
-	this.exp_wdt = wetter.list[0].dt;
-	this.exp_name = wetter.list[0].name;
-	this.exp_lat = wetter.list[0].coord.lat;
-	this.exp_lon = wetter.list[0].coord.lon;
-	this.exp_temp = wetter.list[0].main.temp;
-	this.exp_celsius = wetter.list[0].main.temp - 273.15;
-	this.exp_fahrenheit = ((wetter.list[0].main.temp - 273.15) * 1.8) + 32;
-	this.exp_pressure = wetter.list[0].main.pressure;
-	this.exp_humidity = wetter.list[0].main.humidity;
-	this.exp_temp_min = wetter.list[0].main.temp_min;
-	this.exp_temp_max = wetter.list[0].main.temp_max;
-	this.exp_speed = wetter.list[0].wind.speed;
-	this.exp_deg = wetter.list[0].wind.deg;
-	this.exp_all = wetter.list[0].clouds.all;
-//	this.exp_rain3h = wetter.list[0].rain.3h;
-//	this.exp_snow3h = wetter.list[0].snow.3h;
-	this.exp_wid = wetter.list[0].weather[0].id;
-	this.exp_main = wetter.list[0].weather[0].main;
-	this.exp_desc = wetter.list[0].weather[0].desc;
-	this.exp_icon = wetter.list[0].weather[0].icon;
+	this.exp_cid = wetter.id;
+	this.exp_wdt = wetter.dt;
+	this.exp_name = wetter.name;
+	this.exp_lat = wetter.coord.lat;
+	this.exp_lon = wetter.coord.lon;
+	this.exp_temp = wetter.main.temp;
+	this.exp_celsius = wetter.main.temp - 273.15;
+	this.exp_fahrenheit = ((wetter.main.temp - 273.15) * 1.8) + 32;
+	this.exp_pressure = wetter.main.pressure;
+	this.exp_humidity = wetter.main.humidity;
+	this.exp_temp_min = wetter.main.temp_min;
+	this.exp_temp_max = wetter.main.temp_max;
+	this.exp_speed = wetter.wind.speed;
+	this.exp_deg = wetter.wind.deg;
+	this.exp_all = wetter.clouds.all;
+//	this.exp_rain3h = wetter.rain.3h;
+//	this.exp_snow3h = wetter.snow.3h;
+	this.exp_wid = wetter.weather[0].id;
+	this.exp_main = wetter.weather[0].main;
+	this.exp_desc = wetter.weather[0].desc;
+	this.exp_icon = wetter.weather[0].icon;
 	}
 }
 
@@ -226,7 +226,7 @@ Cnds.prototype.Convert = function (type)
 	        async: false,
 	        success: function (data) {
 	        	weather.fetchdata( data );
-/*	            temperature = data.list[0].main.temp;
+/*	            temperature = data.main.temp;
 	            alert(temperature);
 	            dfd.resolve(temperature);*/
 	        },
@@ -252,7 +252,7 @@ Cnds.prototype.Convert = function (type)
 	        async: false,
 	        success: function (data) {
 	        	weather.fetchdata( data );
-/*	            temperature = data.list[0].main.temp;
+/*	            temperature = data.main.temp;
 	            alert(temperature);
 	            dfd.resolve(temperature);*/
 	        },
@@ -280,7 +280,7 @@ Cnds.prototype.Convert = function (type)
 	        async: false,
 	        success: function (data) {
 	        	weather.fetchdata( data );
-/*	            temperature = data.list[0].main.temp;
+/*	            temperature = data.main.temp;
 	            alert(temperature);
 	            dfd.resolve(temperature);*/
 	        },
