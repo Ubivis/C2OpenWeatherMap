@@ -128,7 +128,7 @@ ACESDone();
 // new cr.Property(ept_link,		name,	link_text,		description, "firstonly")		// has no associated value; simply calls "OnPropertyChanged" on click
 
 var property_list = [
-	new cr.Property(ept_text, 	"APIkey",		"Enter your API Key",		"API Key to requested on openweathermap.org.")
+	new cr.Property(ept_text, 	"APIkey",		"Enter your API Key",		"API Key to requested on openweathermap.org.");
 	];
 	
 // Called by IDE when a new object type is to be created
