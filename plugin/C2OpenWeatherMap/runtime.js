@@ -225,7 +225,7 @@ Cnds.prototype.Convert = function (type)
 	        url: url + "&callback=?",
 	        async: false,
 	        success: function (data) {
-	        	weather.fetchdata( response );
+	        	weather.fetchdata( data );
 /*	            temperature = data.list[0].main.temp;
 	            alert(temperature);
 	            dfd.resolve(temperature);*/
@@ -251,7 +251,7 @@ Cnds.prototype.Convert = function (type)
 	        url: url + "&callback=?",
 	        async: false,
 	        success: function (data) {
-	        	fetchdata( response );
+	        	weather.fetchdata( data );
 /*	            temperature = data.list[0].main.temp;
 	            alert(temperature);
 	            dfd.resolve(temperature);*/
@@ -279,7 +279,7 @@ Cnds.prototype.Convert = function (type)
 	        url: url + "&callback=?",
 	        async: false,
 	        success: function (data) {
-	        	fetchdata( response );
+	        	weather.fetchdata( data );
 /*	            temperature = data.list[0].main.temp;
 	            alert(temperature);
 	            dfd.resolve(temperature);*/
