@@ -167,8 +167,8 @@ function fetchdata ( wetter )
 	this.exp_speed = wetter.list[0].wind.speed;
 	this.exp_deg = wetter.list[0].wind.deg;
 	this.exp_all = wetter.list[0].clouds.all;
-	this.exp_rain3h = wetter.list[0].rain.3h;
-	this.exp_snow3h = wetter.list[0].snow.3h;
+//	this.exp_rain3h = wetter.list[0].rain.3h;
+//	this.exp_snow3h = wetter.list[0].snow.3h;
 	this.exp_wid = wetter.list[0].weather[0].id;
 	this.exp_main = wetter.list[0].weather[0].main;
 	this.exp_desc = wetter.list[0].weather[0].desc;
