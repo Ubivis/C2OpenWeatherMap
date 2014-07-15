@@ -234,6 +234,7 @@ Cnds.prototype.Convert = function (type)
 	            alert("Error while getting weather data :: " + errorData.status);
 	        }
 	    });
+	    return dfd.promise();
 	};
 	
 	Acts.prototype.WeatherByID = function (City)
@@ -260,6 +261,7 @@ Cnds.prototype.Convert = function (type)
 	            alert("Error while getting weather data :: " + errorData.status);
 	        }
 	    });
+	    return dfd.promise();
 	}
 	
 	Acts.prototype.WeatherByLatLon = function (Lat, Lon)
@@ -288,6 +290,7 @@ Cnds.prototype.Convert = function (type)
 	            alert("Error while getting weather data :: " + errorData.status);
 	        }
 	    });
+	    return dfd.promise();
 	};
 
 
