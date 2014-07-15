@@ -219,6 +219,7 @@ Cnds.prototype.Convert = function (type)
 	    url += "&cnt=1";
 	    url += "&APPID=";
 	    url += "cr.plugins_.UBIOWM.prototype.APIkey;";
+	    alert(url);
 	    $.ajax({
 	        type: "POST",
 	        dataType: "jsonp",
