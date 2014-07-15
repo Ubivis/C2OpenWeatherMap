@@ -57,7 +57,7 @@ function GetPluginSettings()
 AddComboParamOption("Kelvin");
 AddComboParamOption("Fahrenheit");
 AddComboParamOption("Celsius");
-AddComboParam(type, "Return temperature as", 0);
+AddComboParam("type", "Return temperature as", 0);
 AddCondition(0, cf_none, "Return Temperatur", "Weather", "Returns current temperature as {0}", "Converts and returns current temperature!", "Convert");
 
 ////////////////////////////////////////
