@@ -112,7 +112,7 @@ AddExpression(16, ef_return_string, "main", "weather", "main", "Condition name."
 AddExpression(17, ef_return_string, "desc", "weather", "desc", "Condition description.");
 AddExpression(18, ef_return_string, "icon", "weather", "icon", "OpenWeatherMap.org icon code");
 AddExpression(19, ef_return_number, "celsius", "main", "celsius", "Temperature in Celsius");
-AddExpression(19, ef_return_number, "fahrenheit", "main", "fahrenheit", "Temperature in Fahrenheit");
+AddExpression(20, ef_return_number, "fahrenheit", "main", "fahrenheit", "Temperature in Fahrenheit");
 
 ////////////////////////////////////////
 ACESDone();
