@@ -185,15 +185,15 @@ Cnds.prototype.Convert = function (type)
     var temp = 0;
     if (type == 0)
     {
-      temp = cr.plugins_.UBIOWM.prototype.temp;
+      temp = this.exp_temp;
     }
     if (type == 1)
     {
-      temp = ((cr.plugins_.UBIOWM.prototype.temp - 273.15) * 1.8)) + 32;
+      temp = ((this.exp_temp - 273.15) * 1.8)) + 32;
     }
     if (type == 2)
     {
-      temp = cr.plugins_.UBIOWM.prototype.temp - 273.15;
+      temp = this.exp_temp - 273.15;
     }
     return temp;
 };
